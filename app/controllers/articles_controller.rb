@@ -1,4 +1,15 @@
 class ArticlesController < ApplicationController
+    def index
+        @articles = Article.all
+      end
+
+    def show
+        @article = Article.find(params[:id])
+        @article.present?
+    end
+
+    # snippet for brevity
+
     def new
     end
 
@@ -7,17 +18,6 @@ class ArticlesController < ApplicationController
 
         @article.save
         redirect_to @article
-    end
-
-    class ArticlesController < ApplicationController
-        def show
-            @article = Article.find(params[:id])
-        end
-
-        def new
-        end
-
-        # snippet for brevity
     end
 
     private
