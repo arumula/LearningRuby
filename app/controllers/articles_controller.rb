@@ -5,10 +5,7 @@ class ArticlesController < ApplicationController
 
     def show
         @article = Article.find(params[:id])
-        @article.present?
     end
-
-    # snippet for brevity
 
     def new
         @article = Article.new
@@ -37,6 +34,13 @@ class ArticlesController < ApplicationController
           render 'edit'
         end
     end
+
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+      
+        redirect_to articles_path
+      end
 
     private
     def article_params
